@@ -48,7 +48,7 @@ jobs:
           write-mode: overwrite
       
       - name: Filtering PHP classes list...
-        use: impresscms-dev/filter-php-class-list-with-glob-like-rules-action@v0.1
+        uses: impresscms-dev/filter-php-class-list-with-glob-like-rules-action@v0.1
         with:
           rules_file: ./filtering-rules.lst
           input_file: ./php-classes.lst
