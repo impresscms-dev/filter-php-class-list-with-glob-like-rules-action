@@ -1,0 +1,19 @@
+name: 'Filter PHP class list with glob like rules'
+description: "This action filters PHP classes list based on GLOB criteria"
+branding:
+  icon: filter
+  color: gray-dark
+inputs:
+  rules_file:
+    description: File with rules list (each rule separate line - like .gitignore)
+    required: true
+  input_file:
+    description: File with PHP class names list
+    required: true
+  output_file:
+    description: File where result will be written
+    required: true
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
