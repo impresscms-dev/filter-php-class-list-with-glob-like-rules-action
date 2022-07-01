@@ -34,7 +34,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.0.0",
     "@types/picomatch": "^2.3.0",
-    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
     "@vercel/ncc": "^0.34.0",
     "eslint": "^8.0.1",
