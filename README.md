@@ -36,7 +36,7 @@ jobs:
         run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader       
           
       - name: Getting PHP classes list...
-        uses: impresscms-dev/generate-php-project-classes-list-file-action@v0.1
+        uses: impresscms-dev/generate-php-project-classes-list-file-action@v0.1.1
         with:
           output_file: ./php-classes.lst
           
@@ -48,7 +48,7 @@ jobs:
           write-mode: overwrite
       
       - name: Filtering PHP classes list...
-        uses: impresscms-dev/filter-php-class-list-with-glob-like-rules-action@v0.1
+        uses: impresscms-dev/filter-php-class-list-with-glob-like-rules-action@v0.1.2
         with:
           rules_file: ./filtering-rules.lst
           input_file: ./php-classes.lst
