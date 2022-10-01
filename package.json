@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^18.7.14",
+    "@types/node": "^18.7.23",
     "@types/picomatch": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.36.1",
