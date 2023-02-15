@@ -37,7 +37,7 @@ class Matcher {
             .map(key => key.replace(/\//g, '\\'))
 
 
-        if (classes.length === 0) {
+        if (ret.length === 0) {
             throw new NoClassesMatchesIncludeRulesError()
         }
 
