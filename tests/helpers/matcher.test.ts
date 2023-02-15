@@ -1,8 +1,7 @@
 import Matcher from "../../src/helpers/matcher";
 import {describe} from "node:test";
-import {match} from "assert";
 import RulesBuckets from "../../src/entities/rules-buckets";
-import exp = require("constants");
+import NoClassesMatchesIncludeRulesError from "../../src/errors/NoClassesMatchesIncludeRulesError";
 
 describe(
     "Testing matcher",
@@ -40,6 +39,65 @@ describe(
                 expect(sorted.bad.join(";")).toBe("Something\\Something")
             }
         )
+
+        test(
+          "filter (at least one good)",
+          () => {
+            const rules: string[] = matcher.convertToCorrectFormat([
+              "ImpressCMS\\Modules\\**",
+              "!ImpressCMS\\Modules\\System\\**",
+            ])
+
+            const sorted: RulesBuckets = matcher.sortGoodBadRules(rules)
+
+            const srcClasses: string[] = [
+              "ImpressCMS\\Modules\\News\\NewsItem",
+              "ImpressCMS\\Modules\\News\\Attachment",
+              "ImpressCMS\\Modules\\Blog\\ContentItem",
+              "ImpressCMS\\Modules\\Blog\\Attachment\\AttachmentFile",
+              "ImpressCMS\\Modules\\Blog\\Attachment\\AttachmentData",
+              "ImpressCMS\\Modules\\System\\Info",
+              "Imponeer\\JustATest\\ContentItem",
+            ]
+
+            const dstClasses = matcher.matchClasses(srcClasses, sorted)
+
+            expect(dstClasses).toHaveLength(5)
+            expect(dstClasses.includes("Imponeer\\JustATest\\ContentItem")).toBeFalsy()
+            expect(dstClasses.includes("ImpressCMS\\Modules\\System\\Info")).toBeFalsy()
+          }
+        )
+
+      test(
+        "filter (nothing good)",
+        () => {
+          const rules: string[] = matcher.convertToCorrectFormat([
+            "ImpressCMS2\\Modules\\**",
+            "!ImpressCMS2\\Modules\\System\\**",
+          ])
+
+          const sorted: RulesBuckets = matcher.sortGoodBadRules(rules)
+
+          const srcClasses: string[] = [
+            "ImpressCMS\\Modules\\News\\NewsItem",
+            "ImpressCMS\\Modules\\News\\Attachment",
+            "ImpressCMS\\Modules\\Blog\\ContentItem",
+            "ImpressCMS\\Modules\\Blog\\Attachment\\AttachmentFile",
+            "ImpressCMS\\Modules\\Blog\\Attachment\\AttachmentData",
+            "ImpressCMS\\Modules\\System\\Info",
+            "Imponeer\\JustATest\\ContentItem",
+          ]
+          const tryMatch = () => {
+            try {
+              matcher.matchClasses(srcClasses, sorted)
+            } catch (e) {
+              throw e
+            }
+          }
+
+          expect(tryMatch).toThrow(NoClassesMatchesIncludeRulesError)
+        }
+      )
 
     }
 )
