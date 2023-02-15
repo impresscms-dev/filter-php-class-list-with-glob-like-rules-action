@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Install PHP
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@v2
         with:
           php-version: 8.1
           extensions: curl, gd, pdo_mysql, json, mbstring, pcre, session
@@ -33,10 +33,10 @@ jobs:
           tools: composer:v2
           
       - name: Install Composer dependencies (with dev)
-        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader       
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
           
       - name: Getting PHP classes list...
-        uses: impresscms-dev/generate-php-project-classes-list-file-action@v0.1.1
+        uses: impresscms-dev/generate-php-project-classes-list-file-action@v1.0.0
         with:
           output_file: ./php-classes.lst
           
@@ -48,7 +48,7 @@ jobs:
           write-mode: overwrite
       
       - name: Filtering PHP classes list...
-        uses: impresscms-dev/filter-php-class-list-with-glob-like-rules-action@v0.1.2
+        uses: impresscms-dev/filter-php-class-list-with-glob-like-rules-action@v1.0.0
         with:
           rules_file: ./filtering-rules.lst
           input_file: ./php-classes.lst
@@ -74,4 +74,3 @@ This action supports such arguments (used in `with` keyword):
 If you want to add some functionality or fix bugs, you can fork, change and create pull request. If you not sure how this works, try [interactive GitHub tutorial](https://skills.github.com).
 
 If you found any bug or have some questions, use [issues tab](https://github.com/impresscms-dev/filter-php-class-list-with-glob-like-rules-action/issues) and write there your questions.
-
