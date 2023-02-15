@@ -1,5 +1,4 @@
 import Matcher from "../../src/helpers/matcher";
-import {describe} from "node:test";
 import RulesBuckets from "../../src/entities/rules-buckets";
 import NoClassesMatchesIncludeRulesError from "../../src/errors/NoClassesMatchesIncludeRulesError";
 
