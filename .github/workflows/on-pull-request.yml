@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkouting code...
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
@@ -42,7 +42,7 @@ jobs:
 
     steps:
       - name: Checkouting code...
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
@@ -83,7 +83,7 @@ jobs:
 
     steps:
       - name: Checkouting code...
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
