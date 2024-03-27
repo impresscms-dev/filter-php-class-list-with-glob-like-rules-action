@@ -69,7 +69,7 @@ jobs:
         run: npm run pack
 
       - name: Uploading build artifact...
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build
           path: dist/*.js
@@ -87,7 +87,7 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Downloading build artifact....
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build
           path: dist/
