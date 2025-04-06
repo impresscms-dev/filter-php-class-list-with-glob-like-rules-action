@@ -40,8 +40,6 @@ jobs:
     steps:
       - name: Checkouting code...
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -81,8 +79,6 @@ jobs:
     steps:
       - name: Checkouting code...
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Downloading build artifact....
         uses: actions/download-artifact@v4
