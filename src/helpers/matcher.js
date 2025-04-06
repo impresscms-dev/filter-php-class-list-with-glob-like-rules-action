@@ -1,6 +1,6 @@
 import {ValidationRulesSets} from '../entities/validation-rules-sets.js';
 import picomatch from 'picomatch';
-import {NoClassesMatchesIncludeRulesError} from '../errors/NoClassesMatchesIncludeRulesError';
+import {NoClassesMatchesIncludeRulesError} from '../errors/no-classes-matches-include-rules-error.js';
 
 export class Matcher {
 
