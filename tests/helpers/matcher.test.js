@@ -1,5 +1,5 @@
 import {Matcher} from '../../src/helpers/matcher';
-import {NoClassesMatchesIncludeRulesError} from '../../src/errors/NoClassesMatchesIncludeRulesError';
+import {NoClassesMatchesIncludeRulesError} from '../../src/errors/no-classes-matches-include-rules-error';
 
 describe(
     "Testing matcher",

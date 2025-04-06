@@ -1,4 +1,4 @@
-import {RulesBuckets} from '../entities/rules-buckets';
+import {ValidationRulesSets} from '../entities/validation-rules-sets.js';
 import picomatch from 'picomatch';
 import {NoClassesMatchesIncludeRulesError} from '../errors/NoClassesMatchesIncludeRulesError';
 
@@ -22,7 +22,7 @@ export class Matcher {
     }
 
     sortGoodBadRules(rules) {
-        return new RulesBuckets(
+        return new ValidationRulesSets(
             this.filterOnlyGoodRules(rules),
             this.filterOnlyBadRules(rules)
         )

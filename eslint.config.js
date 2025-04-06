@@ -3,9 +3,9 @@ export default [
     ignores: ["dist/", "node_modules/"],
   },
   {
-    files: ["**/*.js"], // adjust based on your project
+    files: ["**/*.js"],
     languageOptions: {
-      ecmaVersion: "latest", // or 2021 if you prefer
+      ecmaVersion: "latest",
       sourceType: "module",
     },
     rules: {

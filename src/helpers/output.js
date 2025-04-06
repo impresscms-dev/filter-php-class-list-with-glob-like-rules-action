@@ -1,5 +1,9 @@
-const {debug} = require('@actions/core')
+import {debug} from '@actions/core'
 
+/**
+ * @param {string} firstLine
+ * @param {string[]} rules
+ */
 export function debugRules(firstLine, rules) {
   debug(firstLine + ':')
   if (rules.length > 0) {

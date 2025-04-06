@@ -1,4 +1,4 @@
-export class RulesBuckets {
+export class ValidationRulesSets {
 
   /**
    * @param {string[]} goodRules
