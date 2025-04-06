@@ -1,34 +1,34 @@
-import RulesBuckets from "../entities/rules-buckets"
-import picomatch from "picomatch"
-import NoClassesMatchesIncludeRulesError from "../errors/NoClassesMatchesIncludeRulesError"
+import {RulesBuckets} from '../entities/rules-buckets';
+import picomatch from 'picomatch';
+import {NoClassesMatchesIncludeRulesError} from '../errors/NoClassesMatchesIncludeRulesError';
 
-class Matcher {
+export class Matcher {
 
-    convertToCorrectFormat(rules: string[]): string[] {
+    convertToCorrectFormat(rules) {
         return rules.map(
             (key) => key.replace(/\\/g, '/')
         )
     }
 
-    protected filterOnlyBadRules(rules: string[]): string[] {
+    filterOnlyBadRules(rules) {
         return rules
             .filter(rule => rule.startsWith('!'))
             .map(rule => rule.substring(1))
     }
 
-    protected filterOnlyGoodRules(rules: string[]): string[] {
+    filterOnlyGoodRules(rules) {
         return rules
             .filter(rule => !rule.startsWith('!'))
     }
 
-    sortGoodBadRules(rules: string[]): RulesBuckets {
+    sortGoodBadRules(rules) {
         return new RulesBuckets(
             this.filterOnlyGoodRules(rules),
             this.filterOnlyBadRules(rules)
         )
     }
 
-    matchClasses(classes: string[], rules: RulesBuckets): string[] {
+    matchClasses(classes, rules) {
         const ret = classes
             .filter(key => key !== null)
             .map(key => key.replace(/\\/g, '/'))
@@ -45,5 +45,3 @@ class Matcher {
     }
 
 }
-
-export default Matcher

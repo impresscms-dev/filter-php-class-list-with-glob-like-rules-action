@@ -1,6 +1,5 @@
-import Matcher from "../../src/helpers/matcher";
-import RulesBuckets from "../../src/entities/rules-buckets";
-import NoClassesMatchesIncludeRulesError from "../../src/errors/NoClassesMatchesIncludeRulesError";
+import {Matcher} from '../../src/helpers/matcher';
+import {NoClassesMatchesIncludeRulesError} from '../../src/errors/NoClassesMatchesIncludeRulesError';
 
 describe(
     "Testing matcher",
@@ -11,11 +10,11 @@ describe(
         test(
             "converting to correct format",
             () => {
-                const rules: string[] = [
+                const rules = [
                     "Something\\Something",
                     "That\\**",
                 ]
-                const escaped: string[] = matcher.convertToCorrectFormat(rules)
+                const escaped = matcher.convertToCorrectFormat(rules)
 
                 expect(escaped.join(",")).toContain("/")
                 expect(escaped.join(",")).not.toContain("\\")
@@ -25,13 +24,13 @@ describe(
         test(
             "sort good bad rules",
             () => {
-                const rules: string[] = [
+                const rules = [
                     "Something\\**",
                     "That\\**",
                     "!Something\\Something",
                 ]
 
-                const sorted: RulesBuckets = matcher.sortGoodBadRules(rules)
+                const sorted = matcher.sortGoodBadRules(rules)
 
                 expect(sorted.good).toHaveLength(2)
                 expect(sorted.bad).toHaveLength(1)
@@ -42,14 +41,14 @@ describe(
         test(
           "filter (at least one good)",
           () => {
-            const rules: string[] = matcher.convertToCorrectFormat([
+            const rules = matcher.convertToCorrectFormat([
               "ImpressCMS\\Modules\\**",
               "!ImpressCMS\\Modules\\System\\**",
             ])
 
-            const sorted: RulesBuckets = matcher.sortGoodBadRules(rules)
+            const sorted = matcher.sortGoodBadRules(rules)
 
-            const srcClasses: string[] = [
+            const srcClasses = [
               "ImpressCMS\\Modules\\News\\NewsItem",
               "ImpressCMS\\Modules\\News\\Attachment",
               "ImpressCMS\\Modules\\Blog\\ContentItem",
@@ -70,14 +69,14 @@ describe(
       test(
         "filter (nothing good)",
         () => {
-          const rules: string[] = matcher.convertToCorrectFormat([
+          const rules = matcher.convertToCorrectFormat([
             "ImpressCMS2\\Modules\\**",
             "!ImpressCMS2\\Modules\\System\\**",
           ])
 
-          const sorted: RulesBuckets = matcher.sortGoodBadRules(rules)
+          const sorted = matcher.sortGoodBadRules(rules)
 
-          const srcClasses: string[] = [
+          const srcClasses = [
             "ImpressCMS\\Modules\\News\\NewsItem",
             "ImpressCMS\\Modules\\News\\Attachment",
             "ImpressCMS\\Modules\\Blog\\ContentItem",

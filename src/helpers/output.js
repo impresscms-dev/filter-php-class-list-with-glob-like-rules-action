@@ -1,6 +1,6 @@
-import {debug} from '@actions/core'
+const {debug} = require('@actions/core')
 
-export function debugRules(firstLine: string, rules: string[]): void {
+export function debugRules(firstLine, rules) {
   debug(firstLine + ':')
   if (rules.length > 0) {
     for (const rule of rules) {
