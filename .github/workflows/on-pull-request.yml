@@ -87,7 +87,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Automatically builded and updated
-          file_pattern: dist/*.js
+          file_pattern: dist/index.js dist/index.json
           skip_fetch: true
           skip_checkout: true
           
