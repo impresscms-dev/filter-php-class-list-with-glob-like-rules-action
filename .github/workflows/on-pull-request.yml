@@ -14,14 +14,12 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 18.x
+          - 22.x
           - 20.x
 
     steps:
       - name: Checkouting code...
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -42,8 +40,6 @@ jobs:
     steps:
       - name: Checkouting code...
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -52,9 +48,6 @@ jobs:
 
       - name: NPM install
         run: npm install
-
-      - name: NPM build
-        run: npm run build
 
       - name: NPM format
         run: npm run format
@@ -83,8 +76,6 @@ jobs:
     steps:
       - name: Checkouting code...
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Downloading build artifact....
         uses: actions/download-artifact@v4

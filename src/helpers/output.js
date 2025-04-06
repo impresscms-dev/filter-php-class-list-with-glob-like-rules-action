@@ -1,6 +1,10 @@
 import {debug} from '@actions/core'
 
-export function debugRules(firstLine: string, rules: string[]): void {
+/**
+ * @param {string} firstLine
+ * @param {string[]} rules
+ */
+export function debugRules(firstLine, rules) {
   debug(firstLine + ':')
   if (rules.length > 0) {
     for (const rule of rules) {
