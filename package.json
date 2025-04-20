@@ -1,6 +1,5 @@
 {
   "name": "filter-php-class-list-with-glob-like-rules-action",
-  "version": "0.0.0",
   "description": "This action filters PHP classes list based on GLOB criteria",
   "main": "src/index.js",
   "type": "module",
@@ -12,7 +11,7 @@
     "test": "jest",
     "format": "prettier --write **/*.js",
     "format-check": "prettier --check **/*.js",
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint --no-warn-ignored 'src/**/*.js' 'tests/**/*.js'",
     "pack": "ncc build --minify",
     "all": "npm install && npm run format && npm run lint && npm run pack",
     "fast-all": "npm install && npm run pack"
